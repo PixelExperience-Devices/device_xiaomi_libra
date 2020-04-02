@@ -20,7 +20,6 @@ allow init devpts:chr_file *;
 allow init diag_device:chr_file *;
 allow init hal_ir_hwservice:hwservice_manager *;
 allow init hal_light_hwservice:hwservice_manager *;
-allow init hal_lineage_touch_hwservice:hwservice_manager *;
 allow init hidl_base_hwservice:hwservice_manager *;
 allow init hwservicemanager:binder *;
 allow init init:{ socket capability } *;

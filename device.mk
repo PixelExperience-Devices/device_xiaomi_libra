@@ -285,9 +285,6 @@ PRODUCT_PACKAGES += \
     qti-telephony-common \
     telephony-ext
 
-# Touch
-PRODUCT_PACKAGES += vendor.lineage.touch@1.0-service.libra
-
 # Trust HAL
 PRODUCT_PACKAGES += vendor.lineage.trust@1.0-service
 
