@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device;
-
-import org.lineageos.internal.util.FileUtils;
+package com.xiaomi.settings.device;
 
 public class SwitchPreferenceFilesBackend extends SwitchPreferenceBackend {
 

@@ -14,25 +14,16 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device;
+package com.xiaomi.settings.device;
 
-import org.lineageos.internal.util.FileUtils;
+import android.os.Bundle;
+import android.preference.PreferenceActivity;
 
-import java.util.HashMap;
-import java.util.Map;
+public class ButtonSettingsActivity extends PreferenceActivity {
 
-public class Constants {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    // Preference keys
-    public static final String EDGE_GESTURE_KEY = "edge_gesture";
-
-    // Nodes
-    public static final String EDGE_GESTURE_PATH = "/proc/touchscreen/edge_touch_mode";
-
-    // Holds <preference_key> -> <proc_node> mapping
-    public static final Map<String, SwitchPreferenceBackend> sBackendsMap = new HashMap<>();
-
-    static {
-        sBackendsMap.put(EDGE_GESTURE_KEY, new SwitchPreferenceFilesBackend(EDGE_GESTURE_PATH));
+        getFragmentManager().beginTransaction().replace(android.R.id.content, new ButtonSettingsFragment()).commit();
     }
 }

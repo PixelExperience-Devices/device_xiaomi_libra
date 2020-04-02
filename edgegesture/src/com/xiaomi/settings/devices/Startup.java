@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device;
+package com.xiaomi.settings.device;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -24,7 +24,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import androidx.preference.PreferenceManager;
 import android.util.Log;
-import org.lineageos.internal.util.FileUtils;
 
 public class Startup extends BroadcastReceiver {
 
@@ -33,7 +32,8 @@ public class Startup extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         final String action = intent.getAction();
-        if (lineageos.content.Intent.ACTION_INITIALIZE_LINEAGE_HARDWARE.equals(action)) {
+        if (Intent.ACTION_BOOT_COMPLETED.equals(action) 
+                || Intent.ACTION_PRE_BOOT_COMPLETED.equals(action)){
             enableComponent(context, ButtonSettingsActivity.class.getName());
 
             // Restore saved preference values

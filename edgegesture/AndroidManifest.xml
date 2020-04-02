@@ -16,24 +16,25 @@
     limitations under the License.
 -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.lineageos.settings.device" android:versionCode="6" android:versionName="2.5" android:sharedUserId="android.uid.system">
-    <uses-permission android:name="lineageos.permission.HARDWARE_ABSTRACTION_ACCESS" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.xiaomi.settings.device" android:versionCode="6" android:versionName="2.5" android:sharedUserId="android.uid.system">
+    <uses-permission android:name="android.permission.HARDWARE_ABSTRACTION_ACCESS" />
     <uses-sdk android:minSdkVersion="28" />
     <application android:icon="@mipmap/ic_launcher" android:label="@string/device_settings_app_name" android:theme="@style/Theme.Main" android:defaultToDeviceProtectedStorage="true" android:directBootAware="true">
-        <provider android:name=".EdgeGestureSearchIndexablesProvider" android:authorities="org.lineageos.settings.device" android:multiprocess="false" android:grantUriPermissions="true" android:permission="android.permission.READ_SEARCH_INDEXABLES" android:exported="true">
+        <provider android:name=".EdgeGestureSearchIndexablesProvider" android:authorities="com.xiaomi.settings.device" android:multiprocess="false" android:grantUriPermissions="true" android:permission="android.permission.READ_SEARCH_INDEXABLES" android:exported="true">
             <intent-filter>
                 <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER" />
             </intent-filter>
         </provider>
         <activity android:name=".ButtonSettingsActivity" android:label="@string/button_panel_title">
             <intent-filter>
-                <action android:name="org.lineageos.settings.device.ADDITIONAL_BUTTONS_SETTINGS" />
+                <action android:name="com.xiaomi.settings.device.ADDITIONAL_BUTTONS_SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <receiver android:name=".Startup">
             <intent-filter>
-                <action android:name="lineageos.intent.action.INITIALIZE_MK_HARDWARE" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.PRE_BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
     </application>

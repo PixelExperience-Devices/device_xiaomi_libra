@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.device;
+package com.xiaomi.settings.device;
 
 import android.app.ActionBar;
 import android.content.Context;
@@ -30,9 +30,6 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.MenuItem;
-
-import org.lineageos.internal.util.FileUtils;
-import org.lineageos.internal.util.PackageManagerUtils;
 
 public class ButtonSettingsFragment extends PreferenceFragment implements OnPreferenceChangeListener {
 
