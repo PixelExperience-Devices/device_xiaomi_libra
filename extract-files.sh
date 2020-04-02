@@ -22,9 +22,9 @@ set -e
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-MK_ROOT="$MY_DIR"/../../..
+AOSP_ROOT="$MY_DIR"/../../..
 
-HELPER="$MK_ROOT"/vendor/mokee/build/tools/extract_utils.sh
+HELPER="$AOSP_ROOT"/vendor/aosp/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -52,15 +52,9 @@ if [ -z "$SRC" ]; then
     SRC=adb
 fi
 
-# Initialize the helper for common device
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$MK_ROOT" true "$CLEAN_VENDOR"
-
-extract "$MY_DIR"/common-proprietary-files.txt "$SRC" "$SECTION"
-
-# Reinitialize the helper for device
-setup_vendor "$DEVICE" "$VENDOR" "$MK_ROOT" false "$CLEAN_VENDOR"
+# Initialize the helper for  device
+setup_vendor "$DEVICE" "$VENDOR" "$AOSP_ROOT" true "$CLEAN_VENDOR"
 
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
-extract "$MY_DIR"/../$DEVICE/device-proprietary-files.txt "$SRC" "$SECTION"
 
 "$MY_DIR"/setup-makefiles.sh

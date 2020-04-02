@@ -17,39 +17,30 @@
 
 set -e
 
+DEVICE=libra
+VENDOR=xiaomi
+DEVICE_BRINGUP_YEAR=2017
 INITIAL_COPYRIGHT_YEAR=2017
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-MK_ROOT="$MY_DIR"/../../..
+AOSP_ROOT="$MY_DIR"/../../..
 
-HELPER="$MK_ROOT"/vendor/mokee/build/tools/extract_utils.sh
+HELPER="$MK_ROOT"/vendor/aosp/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
 fi
 . "$HELPER"
 
-# Initialize the helper for common device
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$MK_ROOT" true
+# Initialize the helper for device
+setup_vendor "$DEVICE" "$VENDOR" "$AOSP_ROOT" true
 
 # Copyright headers and common guards
-write_headers "libra leo"
+write_headers "libra"
 
-write_makefiles "$MY_DIR"/common-proprietary-files.txt
-
-write_footers
-
-# Reinitialize the helper for device
-INITIAL_COPYRIGHT_YEAR="$DEVICE_BRINGUP_YEAR"
-setup_vendor "$DEVICE" "$VENDOR" "$MK_ROOT"
-
-# Copyright headers and guards
-write_headers
-
-write_makefiles "$MY_DIR"/../$DEVICE/device-proprietary-files.txt
 write_makefiles "$MY_DIR"/proprietary-files.txt
 
 write_footers
