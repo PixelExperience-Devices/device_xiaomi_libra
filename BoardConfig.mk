@@ -82,21 +82,16 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # Dexpreopt
-DEX_PREOPT_DEFAULT := true
-DONT_DEXPREOPT_PREBUILTS := false
-LOCAL_DEX_PREOPT := true
-PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
-PRODUCT_DEX_PREOPT_BOOT_FLAGS := --compiler-filter=speed
-PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := speed
-PRODUCT_DEX_PREOPT_DEFAULT_FLAGS := --compiler-filter=speed
-PRODUCT_DEX_PREOPT_NEVER_ALLOW_STRIPPING := false
-PRODUCT_OTHER_JAVA_DEBUG_INFO := false
-PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed
-PRODUCT_SYSTEM_SERVER_DEBUG_INFO := false
-USE_DEX2OAT_DEBUG := false
-WITH_DEXPREOPT := true
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := false
-WITH_DEXPREOPT_DEBUG_INFO := false
+ifeq ($(HOST_OS),linux)
+  ifeq ($(WITH_DEXPREOPT),)
+    WITH_DEXPREOPT := true
+    WITH_DEXPREOPT_PIC := true
+    ifneq ($(TARGET_BUILD_VARIANT),user)
+      # Retain classes.dex in APK's for non-user builds
+      DEX_PREOPT_DEFAULT := nostripping
+    endif
+  endif
+endif
 
 # DT2W
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchscreen/double_tap_enable"
