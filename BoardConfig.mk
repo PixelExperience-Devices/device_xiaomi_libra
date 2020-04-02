@@ -141,10 +141,11 @@ BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CONFIG := libra_defconfig
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := /media/wjxxbsh/Data/gcc/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/xiaomi/libra
+TARGET_KERNEL_CONFIG := libra_defconfig
+KERNEL_TOOLCHAIN := $(shell pwd)/prebuilts/arm64-gcc/bin
+KERNEL_TOOLCHAIN_PREFIX := aarch64-elf-
 
 # Keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
