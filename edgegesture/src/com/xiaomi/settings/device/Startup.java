@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.mokee.settings.device;
+package com.xiaomi.settings.device;
 
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -26,8 +26,6 @@ import android.content.SharedPreferences;
 import androidx.preference.PreferenceManager;
 import android.util.Log;
 
-import org.mokee.internal.util.FileUtils;
-
 public class Startup extends BroadcastReceiver {
 
     private static final String TAG = Startup.class.getSimpleName();
@@ -35,7 +33,8 @@ public class Startup extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         final String action = intent.getAction();
-        if (mokee.content.Intent.ACTION_INITIALIZE_MK_HARDWARE.equals(action)) {
+        if (Intent.ACTION_BOOT_COMPLETED.equals(action) 
+                || Intent.ACTION_PRE_BOOT_COMPLETED.equals(action)){
             enableComponent(context, ButtonSettingsActivity.class.getName());
 
             // Restore saved preference values

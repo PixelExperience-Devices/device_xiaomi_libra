@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-package org.mokee.settings.device;
-
-import org.mokee.internal.util.FileUtils;
+package com.xiaomi.settings.device;
 
 public class SwitchPreferenceFilesBackend extends SwitchPreferenceBackend {
 

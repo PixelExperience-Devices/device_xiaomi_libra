@@ -15,9 +15,7 @@
  * limitations under the License.
  */
 
-package org.mokee.settings.device;
-
-import org.mokee.internal.util.FileUtils;
+package com.xiaomi.settings.device;
 
 import java.util.HashMap;
 import java.util.Map;
